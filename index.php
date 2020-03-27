@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard - SB Admin</title>
+        <title>Lord Mobile</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -66,13 +66,13 @@
                             <!--- INICIO MENU -->
                             <a class="nav-link" href="index.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard</a>
+                                Fortalezas</a>
                              <a class="nav-link" href="index.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard</a>
+                                Caceria</a>
                              <a class="nav-link" href="index.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard</a>
+                                Armadura</a>
                             <!--- FIN MENU --> 
 
 
@@ -131,7 +131,48 @@
                 <main>
                 <!-- INICIO CUERPO -->
                 <div id="" class=""> ACA VAN LAS SECCIONES</div>
-                
+
+                <!-- Tabla para calculo de tropas para fortalezas -->
+                <div class="card mb-4">
+                    <div class="card-header"><i class="fas fa-table mr-1"></i>Informe de fortaleza</div>
+                       <div class="card-body">
+                            <div class="table-responsive">
+                            <table id= "fortalezas" class="table table-bordered" width="100%" cellspacing="0">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">Tipo de tropa</th>
+                                      <th scope="col">Cantidad de tropas</th>
+                                      <th scope="col">Porcentaje de tropas</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <th scope="row">Infanteria</th>
+                                      <td>??</td>
+                                      <td>??</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Artilleria</th>
+                                      <td>??</td>
+                                      <td>??</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Caballeria</th>
+                                      <td>??</td>
+                                      <td>??</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">Asedio</th>
+                                      <td>??</td>
+                                      <td>??</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                </div>
+                                <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
 
                 <!-- FIN CUERPO -->
 
