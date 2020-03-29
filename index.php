@@ -148,22 +148,38 @@
                                   <tbody>
                                     <tr>
                                       <th scope="row">Infanteria</th>
-                                      <td>??</td>
+                                      <td>
+                                         <div class="input-group">
+                                            <input class="form-control" type="text" placeholder="cantidad de tropas" aria-label="Search" aria-describedby="basic-addon2" />
+                                        </div>
+                                      </td>
                                       <td>??</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">Artilleria</th>
-                                      <td>??</td>
+                                      <td>
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" placeholder="cantidad de tropas" aria-label="Search" aria-describedby="basic-addon2" />
+                                        </div>
+                                      </td>
                                       <td>??</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">Caballeria</th>
-                                      <td>??</td>
+                                      <td>                                        
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" placeholder="cantidad de tropas" aria-label="Search" aria-describedby="basic-addon2" />
+                                        </div>
+                                    </td>
                                       <td>??</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">Asedio</th>
-                                      <td>??</td>
+                                      <td>                                        
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" placeholder="cantidad de tropas" aria-label="Search" aria-describedby="basic-addon2" />
+                                        </div>
+                                      </td>
                                       <td>??</td>
                                     </tr>
                                   </tbody>
