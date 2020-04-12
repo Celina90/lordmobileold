@@ -126,7 +126,6 @@
 
                 <!-- Tabla para calculo de tropas para fortalezas -->
                 <div class="card mb-2">
-                <form action="" method="get" accept-charset="utf-8">
                        <div class="card-body">
                         <div class="card-header">Informe de fortaleza</div>
                         <label class="title-trop">Cantidad de tropas como capitán:</label>
@@ -150,8 +149,8 @@
                                             <input class="form-control" type="text" placeholder="cantidad de tropas" aria-label="Search"  id="inf-trop" aria-describedby="basic-addon2" />
                                         </div>
                                       </td>
-                                      <td>??</td>
-                                      <td>??</td>
+                                      <td id="porc-inf">-</td>
+                                      <td id="tot-inf">-</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">Artilleria</th>
@@ -160,8 +159,8 @@
                                             <input class="form-control" type="text" id="art-trop"  placeholder="cantidad de tropas" aria-label="Search" aria-describedby="basic-addon2" />
                                         </div>
                                       </td>
-                                      <td>??</td>
-                                      <td>??</td>
+                                      <td id="porc-art">-</td>
+                                      <td id="tot-art">-</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">Caballeria</th>
@@ -170,8 +169,8 @@
                                             <input class="form-control" type="text" id="cab-trop"  placeholder="cantidad de tropas" aria-label="Search" aria-describedby="basic-addon2" />
                                         </div>
                                     </td>
-                                      <td>??</td>
-                                      <td>??</td>
+                                      <td id="porc-cab">-</td>
+                                      <td id="tot-cab">-</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">Asedio</th>
@@ -180,17 +179,17 @@
                                             <input class="form-control" type="text" id="ase-trop"  placeholder="cantidad de tropas" aria-label="Search" aria-describedby="basic-addon2" />
                                         </div>
                                       </td>
-                                      <td>??</td>
-                                      <td>??</td>
+                                      <td id="porc-ase">-</td>
+                                      <td id="tot-ase">-</td>
                                     </tr>
                                     <tr>
                                       <th scope="row">Totales</th>
                                       <td>                                        
-                                        <div class="input-group">
+                                        <div class="input-group" id="totalestropa">
                                         </div>
                                       </td>
-                                      <td>??</td>
-                                      <td>??</td>
+                                      <td id="tot-porc">-</td>
+                                      <td id="tot-cap">-</td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -198,7 +197,6 @@
                                 <button class="btn btn-primary" type="button" id="cal-but">Calcular
                                     <!--i class="fas fa-search"></i--></button>
                             </div>
-                            </form>
                         </div>
                     </div>
 
@@ -258,14 +256,59 @@ labe.title-trop {
 .title-trop {
     margin: 20px 14px 15px 0px;
 }
+div#totalestropa {
+    font-size: 18px;
+    font-weight: 500;
+}
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-$( window ).load(function() {
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>    
+$(document).ready(function(){
     console.log("addasdsd");
-  alert("1231231");
-}); 
-$("#cal-but").click(function(event){
-    alert("asdasdasd");
-});    
+  
+});
+
+$("#cal-but").click(function(event) {
+    capitantropas = parseInt($("#total-trop").val());
+    inftropas = parseInt($("#inf-trop").val());
+    arttropas = parseInt($("#art-trop").val());
+    cabtropas = parseInt($("#cab-trop").val());
+    asetropas = parseInt($("#ase-trop").val());
+
+    totaltropas=inftropas+arttropas+cabtropas+asetropas;
+    porcinf=(inftropas*100)/totaltropas;
+    porcart=(arttropas*100)/totaltropas;
+    porccab=(cabtropas*100)/totaltropas;
+    porcase=(asetropas*100)/totaltropas;
+
+    totalporc = porcinf+porcart+porccab+porcase;
+
+    totinf = (porcart*capitantropas)/100;
+    totart = (porccab*capitantropas)/100;
+    totcab = (porcinf*capitantropas)/100;
+    totase = (porcase*capitantropas)/100; 
+    totalcap=totinf+totart+totcab+totase;
+    //porcentajes
+    $("#totalestropa").html(totaltropas);
+    $("#porc-inf").html(porcinf.toFixed(2)+' %');
+    $("#porc-art").html(porcart.toFixed(2)+' %');
+    $("#porc-cab").html(porccab.toFixed(2)+' %');
+    $("#porc-ase").html(porcase.toFixed(2)+' %');
+    $("#tot-porc").html(totalporc.toFixed(2)+' %');
+
+    /// totales
+    $("#tot-inf").html(totinf.toFixed(1));
+    $("#tot-art").html(totart.toFixed(1));
+    $("#tot-cab").html(totcab.toFixed(1));
+    $("#tot-ase").html(totase.toFixed(1));
+    $("#tot-cap").html(totalcap);
+
+
+
+
+
+
+    //alert(totaltropas);
+});
 
 </script>
