@@ -55,10 +55,10 @@
                             <!--div class="sb-sidenav-menu-heading">Core :)</div-->
 
                             <!--- INICIO MENU -->
-                            <a class="nav-link" href="index.html"
+                            <a class="nav-link" href="#seccion-fortaleza"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Fortalezas</a>
-                             <a class="nav-link" href="index.html"
+                             <a class="nav-link" href="#seccion-f"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Caceria</a>
                              <a class="nav-link" href="index.html"
@@ -119,16 +119,16 @@
                 </nav>
             </div>
         </div>
-            <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content" >
                 <main>
                 <!-- INICIO CUERPO -->
-                <div id="" class=""> ACA VAN LAS SECCIONES</div>
+                <div id="" class="" id="seccion-fortaleza"> ACA VAN LAS SECCIONES</div>
 
                 <!-- Tabla para calculo de tropas para fortalezas -->
                 <div class="card mb-2">
-                       <div class="card-body">
-                        <div class="card-header">Informe de fortaleza</div>
-                        <label class="title-trop">Cantidad de tropas como capitán:</label>
+                       <div class="card-body" >
+                        <div class="card-header" >Informe de fortaleza</div>
+                        <label class="title-trop" >Cantidad de tropas como capitán:</label>
                             <input class="form-control input-trop" type="text" placeholder="cantidad de tropas" aria-label="Search" aria-describedby="basic-addon2"
                             id="total-trop" />
                             <div class="table-responsive">
