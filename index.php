@@ -1,4 +1,6 @@
 <?php
+//conectar db
+include ("conexion.php");
 
 ?>
 <!DOCTYPE html>
@@ -63,7 +65,7 @@
                                 Caceria</a>
                              <a class="nav-link" href="index.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Armadura</a>
+                                Habilidades de Heroes</a>
                             <!--- FIN MENU --> 
 
 
@@ -199,6 +201,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="sector-caceria">
+                        <select name="mounstros-select" class="custom-select">
+                            <?php
+                                #var_dump(getSelectMonster());exit();
+                                $con = new Conections();
+                                #var_dump($con->getSelectMonster()->fetch_all());exit();
+                                $moustros=$con->getSelectMonster()->fetch_all();
+                                #var_dump($moustros[0][0]);
+                                foreach ($moustros as $clave=>$valor){
+                                    echo "<option value='".$valor[0]."'>".$valor[1]."</option>";
+                                }
+                            ?>
+
+                        </select>
+                        <div class="mounstro-seleccionado"  >
+                            <img class="img-mounstro" src="img\mounstro\bestia_de_la_nieve.png" alt="">
+                        </div>
+
+
+                    </div>
+
+
+
 
                 <!-- FIN CUERPO -->
                 </main>
@@ -259,6 +284,13 @@ labe.title-trop {
 div#totalestropa {
     font-size: 18px;
     font-weight: 500;
+}
+.sector-caceria {
+    width: 400px;
+    margin-left: 240px;
+}
+.img-mounstro {
+    width: 200px;
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
