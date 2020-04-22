@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-04-2020 a las 02:02:00
+-- Tiempo de generación: 23-04-2020 a las 00:51:28
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 5.6.39
 
@@ -139,6 +139,58 @@ INSERT INTO `ataque` (`id`, `id_moustro`, `id_heroe`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `habilidad_heroe`
+--
+
+CREATE TABLE `habilidad_heroe` (
+  `id` int(4) NOT NULL,
+  `id_habilidad` int(11) NOT NULL,
+  `id_heroe` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `habilidad_heroe`
+--
+
+INSERT INTO `habilidad_heroe` (`id`, `id_habilidad`, `id_heroe`) VALUES
+(1, 7, 1),
+(2, 3, 1),
+(3, 10, 2),
+(4, 6, 3),
+(5, 7, 3),
+(6, 7, 5),
+(7, 2, 5),
+(12, 4, 6),
+(13, 7, 7),
+(14, 9, 7),
+(15, 6, 8),
+(16, 4, 9),
+(17, 5, 9),
+(18, 2, 10),
+(19, 11, 10),
+(20, 2, 10),
+(21, 11, 10),
+(22, 1, 11),
+(23, 7, 11),
+(24, 4, 12),
+(25, 5, 12),
+(26, 8, 13),
+(27, 1, 14),
+(28, 8, 15),
+(29, 9, 15),
+(30, 9, 16),
+(31, 13, 17),
+(32, 10, 17),
+(33, 13, 15),
+(34, 6, 18),
+(35, 11, 18),
+(36, 6, 19),
+(37, 2, 20),
+(38, 3, 20);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `heroe`
 --
 
@@ -195,23 +247,23 @@ CREATE TABLE `mounstro` (
 
 INSERT INTO `mounstro` (`id`, `nombre`, `path`, `descripcion`) VALUES
 (1, 'Terrospin', '', ''),
-(2, 'Titan de Marea', '', ''),
-(3, 'Noceros', '', ''),
+(2, 'Titan de Marea', 'img\\mounstro\\titan_de_marea.png', ''),
+(3, 'Noceros', 'img\\mounstro\\noceros.png', ''),
 (4, 'Megalarva', '', ''),
 (5, 'Abeja Reina', '', ''),
 (6, 'Saberfang', '', ''),
 (7, 'Gargantua', '', ''),
 (8, 'Caballo de Troya', '', ''),
 (9, 'Grifo', '', ''),
-(10, 'Bestia de la Nieve', '', ''),
-(11, 'Drider Infernal', '', ''),
+(10, 'Bestia de la Nieve', 'img\\mounstro\\bestia_de_la_nieve.png', ''),
+(11, 'Drider Infernal', 'img\\mounstro\\drider_infernal.png', ''),
 (12, 'Chaman Vudu', '', ''),
 (13, 'La Muerte', '', ''),
 (14, 'Buen Apetito', '', ''),
-(15, 'Moai Milenario', '', ''),
+(15, 'Moai Milenario', 'img\\mounstro\\moai_milenario.png', ''),
 (16, 'Guiverno de Jade', '', ''),
 (17, 'Alanegra', '', ''),
-(18, 'Alaescarcha', '', '');
+(18, 'Alaescarcha', 'img\\mounstro\\alescarcha.png', '');
 
 -- --------------------------------------------------------
 
@@ -232,6 +284,36 @@ INSERT INTO `tipo_ataque` (`id`, `tipo_ataque`) VALUES
 (1, 'Fisico'),
 (2, 'Mágico'),
 (3, 'Mixto');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_habilidad`
+--
+
+CREATE TABLE `tipo_habilidad` (
+  `id` int(4) NOT NULL,
+  `tipo_habilidad` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tipo_habilidad`
+--
+
+INSERT INTO `tipo_habilidad` (`id`, `tipo_habilidad`) VALUES
+(1, 'ATQ Ejercito'),
+(2, 'ATQ Artilleria'),
+(3, 'DEF Artilleria'),
+(4, 'ATQ Asedio'),
+(5, 'DEF Asedio'),
+(6, 'ATQ Infanteria'),
+(7, 'ATQ Trampa'),
+(8, 'ATQ Caballeria'),
+(9, 'DEF Caballeria'),
+(10, 'DEF Infateria'),
+(11, 'DEF Trampa'),
+(12, 'DEF Ejercito'),
+(13, 'DEF Muralla');
 
 -- --------------------------------------------------------
 
@@ -269,6 +351,16 @@ ALTER TABLE `ataque`
   ADD KEY `tipo` (`tipo`);
 
 --
+-- Indices de la tabla `habilidad_heroe`
+--
+ALTER TABLE `habilidad_heroe`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `id_2` (`id`,`id_habilidad`,`id_heroe`),
+  ADD KEY `id_heroe` (`id_heroe`),
+  ADD KEY `id_habilidad` (`id_habilidad`);
+
+--
 -- Indices de la tabla `heroe`
 --
 ALTER TABLE `heroe`
@@ -291,6 +383,14 @@ ALTER TABLE `tipo_ataque`
   ADD UNIQUE KEY `id` (`id`);
 
 --
+-- Indices de la tabla `tipo_habilidad`
+--
+ALTER TABLE `tipo_habilidad`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `id_2` (`id`);
+
+--
 -- Indices de la tabla `tipo_tropa`
 --
 ALTER TABLE `tipo_tropa`
@@ -307,6 +407,12 @@ ALTER TABLE `tipo_tropa`
 --
 ALTER TABLE `ataque`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+
+--
+-- AUTO_INCREMENT de la tabla `habilidad_heroe`
+--
+ALTER TABLE `habilidad_heroe`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `heroe`
@@ -327,6 +433,12 @@ ALTER TABLE `tipo_ataque`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_habilidad`
+--
+ALTER TABLE `tipo_habilidad`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo_tropa`
 --
 ALTER TABLE `tipo_tropa`
@@ -343,6 +455,19 @@ ALTER TABLE `ataque`
   ADD CONSTRAINT `ataque_ibfk_1` FOREIGN KEY (`id_heroe`) REFERENCES `heroe` (`id`),
   ADD CONSTRAINT `ataque_ibfk_2` FOREIGN KEY (`id_moustro`) REFERENCES `mounstro` (`id`),
   ADD CONSTRAINT `ataque_ibfk_3` FOREIGN KEY (`tipo`) REFERENCES `tipo_ataque` (`id`);
+
+--
+-- Filtros para la tabla `habilidad_heroe`
+--
+ALTER TABLE `habilidad_heroe`
+  ADD CONSTRAINT `habilidad_heroe_ibfk_1` FOREIGN KEY (`id_heroe`) REFERENCES `heroe` (`id`),
+  ADD CONSTRAINT `habilidad_heroe_ibfk_2` FOREIGN KEY (`id_habilidad`) REFERENCES `tipo_habilidad` (`id`);
+
+--
+-- Filtros para la tabla `heroe`
+--
+ALTER TABLE `heroe`
+  ADD CONSTRAINT `heroe_ibfk_1` FOREIGN KEY (`id_tipo_tropa`) REFERENCES `tipo_tropa` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
