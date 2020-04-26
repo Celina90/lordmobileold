@@ -202,7 +202,7 @@ include ("conexion.php");
                         </div>
                     </div>
                     <div class="sector-caceria">
-                        <select name="mounstros-select" class="custom-select">
+                        <select name="mounstros-select" class="custom-select" id="mounstros-select">
                             <?php
                                 #var_dump(getSelectMonster());exit();
                                 $con = new Conections();
@@ -213,15 +213,52 @@ include ("conexion.php");
                                     echo "<option value='".$valor[0]."'>".$valor[1]."</option>";
                                 }
                             ?>
-
                         </select>
                         <div class="mounstro-seleccionado"  >
-                            <img class="img-mounstro" src="img\mounstro\bestia_de_la_nieve.png" alt="">
+                            <div id="sector-caceria">
+                                '<table class="caceria-tabla" style="height: 61px;" width="468">
+<tbody>
+<tr style="height: 10px;">
+<td style="width: 116px; height: 56px;" rowspan="3">&nbsp;</td>
+<td style="width: 117px; height: 10px;" colspan="3">&nbsp;Atacado  por</td>
+</tr>
+<tr style="height: 23px;">
+<td style="width: 117px; height: 23px;">&nbsp;</td>
+<td style="width: 117px; height: 23px;">&nbsp;</td>
+<td style="width: 117px; height: 23px;">&nbsp;</td>
+</tr>
+<tr style="height: 23px;">
+<td style="width: 117px; height: 23px;">&nbsp;</td>
+<td style="width: 117px; height: 23px;">&nbsp;</td>
+<td style="width: 117px; height: 23px;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sector-habilidad">
+                        <select name="habilidad-select" class="custom-select" id="habilidad-select">
+                            <?php
+                                #var_dump(getSelectMonster());exit();
+                                #$con = new Conections();
+                                #var_dump($con->getSelectMonster()->fetch_all());exit();
+                                $habilidad=$con->getSelectHability()->fetch_all();
+                                #var_dump($moustros[0][0]);
+                                foreach ($habilidad as $clave=>$valor){
+                                    echo "<option value='".$valor[0]."'>".$valor[1]."</option>";
+                                }
+                            ?>
+                         
+                        </select>
+                        <div class="habilidad-seleccionado"  >
+                            <div id="sector-habilidad">
+                                
+                            </div>
                         </div>
 
 
                     </div>
-
 
 
 
@@ -286,11 +323,33 @@ div#totalestropa {
     font-weight: 500;
 }
 .sector-caceria {
-    width: 400px;
+    width: 800px;
     margin-left: 240px;
+    margin-bottom: 30px;
+}
+.sector-habilidad {
+    width: 800px;
+    margin-left: 240px;
+    margin-bottom: 30px;
+}
+table.caceria-tabla {
+    width: 100%;
+}
+.caceria-tabla td {
+background-color: #f3f3f3;
+    margin: 5px;
+    border: 1px solid #cecece;
 }
 .img-mounstro {
     width: 200px;
+}
+select#mounstros-select {
+    width: 400px;
+    margin-bottom: 5px;
+}
+select#habilidad-select {
+    width: 400px;
+    margin-bottom: 5px;
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -342,5 +401,54 @@ $("#cal-but").click(function(event) {
 
     //alert(totaltropas);
 });
+
+
+
+$("#mounstros-select").change(function(event) {
+    //console.log("asdasdasdasdasdas");
+ selectedmonster= $("#mounstros-select").val();
+
+$.ajax({
+    url: 'auxiliar.php',
+    type: 'POST',
+    //dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+    data: {selectedd: selectedmonster, sector:1 },
+})
+.done(function(html) {
+    //alert(data);
+    $("#sector-caceria").html(html);
+    console.log("success");
+})
+.fail(function() {
+    console.log("error");
+})
+.always(function() {
+    console.log("complete");
+});
+});
+
+$("#habilidad-select").change(function(event) {
+ selectedhabilidad= $("#habilidad-select").val();
+$.ajax({
+    url: 'auxiliar.php',
+    type: 'POST',
+    //dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+    data: {selectedd: selectedhabilidad,sector:2},
+})
+.done(function(html) {
+    //alert(data);
+    $("#sector-habilidad").html(html);
+    console.log("success");
+})
+.fail(function() {
+    console.log("error");
+})
+.always(function() {
+    console.log("complete");
+});
+});
+
+
+
 
 </script>
