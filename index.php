@@ -1,7 +1,6 @@
 <?php
 //conectar db
 include ("conexion.php");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +26,7 @@ include ("conexion.php");
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Start Bootstrap</a><!--button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button-->
+            <a class="navbar-brand" href="#">Bienvenido a la fanpage de Lord Mobile</a><!--button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button-->
             <!-- Navbar Search-->
             <!--form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -55,24 +54,20 @@ include ("conexion.php");
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <!--div class="sb-sidenav-menu-heading">Core :)</div-->
-
                             <!--- INICIO MENU -->
                             <a class="nav-link" href="#seccion-fortaleza"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Fortalezas</a>
-                             <a class="nav-link" href="#seccion-f"
+                             <a class="nav-link" href="#seccion-caceria"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Caceria</a>
-                             <a class="nav-link" href="index.html"
+                             <a class="nav-link" href="#seccion-habilidades-heroes"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Habilidades de Heroes</a>
+                             <a class="nav-link" href="#seccion-habilidades-monstruitos"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Habilidades de Monstruito</a>
                             <!--- FIN MENU --> 
-
-
-
-
-
-
                             <!--div class="sb-sidenav-menu-heading">Interface :)</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -116,7 +111,7 @@ include ("conexion.php");
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Contacto:</div>
-                        01fortest@gmial.com
+                        <a href="mailto:01fortest@gmail.com">01fortest@gmail.com</a>
                     </div>
                 </nav>
             </div>
@@ -124,10 +119,8 @@ include ("conexion.php");
             <div id="layoutSidenav_content" >
                 <main>
                 <!-- INICIO CUERPO -->
-                <div id="" class="" id="seccion-fortaleza"> ACA VAN LAS SECCIONES</div>
-
                 <!-- Tabla para calculo de tropas para fortalezas -->
-                <div class="card mb-2">
+                <div class="card mb-2" id="seccion-fortaleza">
                        <div class="card-body" >
                         <div class="card-header" >Informe de fortaleza</div>
                         <label class="title-trop" >Cantidad de tropas como capitán:</label>
@@ -201,7 +194,8 @@ include ("conexion.php");
                             </div>
                         </div>
                     </div>
-                    <div class="sector-caceria">
+                    <div class="seccion-caceria" id="seccion-caceria">
+                        <div class="card-header" >Caceria</div>
                         <select name="mounstros-select" class="custom-select" id="mounstros-select">
                             <?php
                                 #var_dump(getSelectMonster());exit();
@@ -237,7 +231,8 @@ include ("conexion.php");
                             </div>
                         </div>
                     </div>
-                    <div class="sector-habilidad">
+                    <div class="seccion-habilidades-heroes" id="seccion-habilidades-heroes">
+                        <div class="card-header" >Habilidades de Heroes</div>
                         <select name="habilidad-select" class="custom-select" id="habilidad-select">
                             <?php
                                 #var_dump(getSelectMonster());exit();
@@ -249,23 +244,34 @@ include ("conexion.php");
                                     echo "<option value='".$valor[0]."'>".$valor[1]."</option>";
                                 }
                             ?>
-                         
                         </select>
                         <div class="habilidad-seleccionado"  >
                             <div id="sector-habilidad">
-                                
                             </div>
                         </div>
-
-
                     </div>
-
-
-
+                    <div class="seccion-habilidades-monstruito" id="seccion-habilidades-monstruitos">
+                        <div class="card-header" >Habilidades de monstruito</div>
+                        <select name="monstruito-select" class="custom-select" id="monstruito-select">
+                            <?php
+                                #var_dump(getSelectMonster());exit();
+                                #$con = new Conections();
+                                #var_dump($con->getSelectMonster()->fetch_all());exit();
+                                $habilidad=$con->getSelectHability()->fetch_all();
+                                #var_dump($moustros[0][0]);
+                                foreach ($habilidad as $clave=>$valor){
+                                    echo "<option value='".$valor[0]."'>".$valor[1]."</option>";
+                                }
+                            ?>
+                        </select>
+                        <div class="monstruito-seleccionado"  >
+                            <div id="sector-monstruito">
+                            </div>
+                        </div>
+                    </div>
                 <!-- FIN CUERPO -->
                 </main>
                 <!--div class="footer-custom"-->
-                    
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -322,15 +328,27 @@ div#totalestropa {
     font-size: 18px;
     font-weight: 500;
 }
-.sector-caceria {
+.seccion-caceria {
     width: 800px;
-    margin-left: 240px;
+    margin-left: 220px;
     margin-bottom: 30px;
+    padding: 1.25rem;
 }
-.sector-habilidad {
+.seccion-habilidades-heroes {
     width: 800px;
-    margin-left: 240px;
+    margin-left: 220px;
     margin-bottom: 30px;
+    /*height: -webkit-fill-available;*/
+    min-height: 240px;
+    padding: 1.25rem;
+}
+.seccion-habilidades-monstruito {
+    width: 800px;
+    margin-left: 220px;
+    margin-bottom: 30px;
+   /* height: -webkit-fill-available;*/
+    min-height: 240px;
+    padding: 1.25rem;
 }
 table.caceria-tabla {
     width: 100%;
@@ -341,7 +359,7 @@ background-color: #f3f3f3;
     border: 1px solid #cecece;
 }
 .img-mounstro {
-    width: 200px;
+    height: 120px;
 }
 select#mounstros-select {
     width: 400px;
@@ -351,29 +369,53 @@ select#habilidad-select {
     width: 400px;
     margin-bottom: 5px;
 }
+.hability-ind {
+    margin: 5px;
+    /* width: 100px; */
+    float: left;
+}
+footer.py-4.bg-light.mt-auto {
+    float: left;
+    margin-left: 230px;
+}
+.card-header {
+    margin-bottom: 15px;
+    color: white;
+    background-color: #212529;
+    margin-top: 15px;
+}
+button#cal-but {
+    background-color: #212529;
+    border-color: white;
+}
+div#seccion-fortaleza {
+    margin-top: 35px;
+}
+.sb-nav-fixed .sb-topnav {
+    height: 40px;
+}
+.card-header {
+    margin: 0;
+    margin-bottom: 10px;
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>    
 $(document).ready(function(){
     console.log("addasdsd");
-  
 });
-
 $("#cal-but").click(function(event) {
     capitantropas = parseInt($("#total-trop").val());
     inftropas = parseInt($("#inf-trop").val());
     arttropas = parseInt($("#art-trop").val());
     cabtropas = parseInt($("#cab-trop").val());
     asetropas = parseInt($("#ase-trop").val());
-
     totaltropas=inftropas+arttropas+cabtropas+asetropas;
     porcinf=(inftropas*100)/totaltropas;
     porcart=(arttropas*100)/totaltropas;
     porccab=(cabtropas*100)/totaltropas;
     porcase=(asetropas*100)/totaltropas;
-
     totalporc = porcinf+porcart+porccab+porcase;
-
     totinf = (porcart*capitantropas)/100;
     totart = (porccab*capitantropas)/100;
     totcab = (porcinf*capitantropas)/100;
@@ -386,28 +428,17 @@ $("#cal-but").click(function(event) {
     $("#porc-cab").html(porccab.toFixed(2)+' %');
     $("#porc-ase").html(porcase.toFixed(2)+' %');
     $("#tot-porc").html(totalporc.toFixed(2)+' %');
-
     /// totales
     $("#tot-inf").html(totinf.toFixed(1));
     $("#tot-art").html(totart.toFixed(1));
     $("#tot-cab").html(totcab.toFixed(1));
     $("#tot-ase").html(totase.toFixed(1));
     $("#tot-cap").html(totalcap);
-
-
-
-
-
-
     //alert(totaltropas);
 });
-
-
-
 $("#mounstros-select").change(function(event) {
     //console.log("asdasdasdasdasdas");
  selectedmonster= $("#mounstros-select").val();
-
 $.ajax({
     url: 'auxiliar.php',
     type: 'POST',
@@ -426,7 +457,6 @@ $.ajax({
     console.log("complete");
 });
 });
-
 $("#habilidad-select").change(function(event) {
  selectedhabilidad= $("#habilidad-select").val();
 $.ajax({
@@ -447,8 +477,24 @@ $.ajax({
     console.log("complete");
 });
 });
-
-
-
-
+$("#monstruito-select").change(function(event) {
+ selectedhabilidad= $("#monstruito-select").val();
+$.ajax({
+    url: 'auxiliar.php',
+    type: 'POST',
+    //dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+    data: {selectedd: selectedhabilidad,sector:3},
+})
+.done(function(html) {
+    //alert(data);
+    $("#sector-monstruito").html(html);
+    console.log("success");
+})
+.fail(function() {
+    console.log("error");
+})
+.always(function() {
+    console.log("complete");
+});
+});
 </script>
