@@ -19,7 +19,6 @@ services:
         MYSQL_USER: lordmobile
         MYSQL_DATABASE: lordmobiledb
         MYSQL_PASSWORD: lordmobile
-    #command: mysql lordmobiledb -u MYSQL_USER -p MYSQL_PASSWORD < lordmobiledb.sql
   
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest

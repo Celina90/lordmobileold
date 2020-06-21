@@ -33,12 +33,8 @@ function getAtackHero($selecteddata){
 	$result = $this->conection()->query($sql);
 	return $result;
 }
-
-
-
 }
 //$bar->hacer_algo();
 #echo "<pre>";
 #var_dump(getSelectMonster());exit();
-
 ?>
